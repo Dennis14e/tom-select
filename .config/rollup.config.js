@@ -4,16 +4,11 @@ import { terser } from 'rollup-plugin-terser';
 import pkg from '../package.json';
 import path from 'path';
 import fs from 'fs';
+const banner = require('./banner');
 
 const tom_select_path_js	= path.resolve( 'src/tom-select.js' );
 const tom_select_path_ts	= path.resolve( 'src/tom-select.ts' );
 const configs				= [];
-
-const banner = `/**
-* Tom Select v${pkg.version}
-* Licensed under the Apache License, Version 2.0 (the "License");
-*/
-`;
 
 const extensions = [
   '.js', '.jsx', '.ts', '.tsx', '.mjs',
@@ -81,6 +76,7 @@ var terser_config = terser({
   //toplevel: true, // removes tomSelect footer
   format: {
     semicolons: false,
+	/*
     comments: function (node, comment) {
       var text = comment.value;
       var type = comment.type;
@@ -89,6 +85,7 @@ var terser_config = terser({
         return /\* Tom Select/i.test(text);
       }
     },
+	*/
   },
 });
 
