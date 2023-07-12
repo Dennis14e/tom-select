@@ -1,5 +1,5 @@
 <p align="center">
-<h1 align="center">Tom Select</h1>
+<h1 align="center">Tom Select - Work in Progress Fork</h1>
 </p>
 
 <p align="center">
