@@ -114,9 +114,6 @@ module.exports = function(config) {
 	};
 
 	var reporters = ['mocha','coverage','aChecker'];
-	if( process.env.TRAVIS_CI ){
-		reporters = ['mocha', 'coverage', 'coveralls','aChecker']
-	}
 
 	var target = process.env.TARGET;
 	if( !target ){
@@ -165,12 +162,14 @@ module.exports = function(config) {
 			],
 			dir: 'coverage/'
 		},
+		/*
 		browserStack: {
 			tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
 			build: process.env.TRAVIS_BUILD_NUMBER,
 			project: process.env.TRAVIS_CI ? 'tom-select': '',
 			name:  process.env.TRAVIS_CI ? 'tom-select': '',
 		},
+		*/
 		customLaunchers: customLaunchers,
 		reporters: reporters,
 		colors: true,
