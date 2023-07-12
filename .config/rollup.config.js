@@ -1,7 +1,6 @@
 import {nodeResolve} from '@rollup/plugin-node-resolve'; // so Rollup can resolve imports without file extensions and `node_modules`
 import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
-import pkg from '../package.json';
+import terser from '@rollup/plugin-terser';
 import path from 'path';
 import fs from 'fs';
 const banner = require('./banner');
