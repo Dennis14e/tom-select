@@ -1,16 +1,22 @@
+# Node
+node_modules/
+
+# OS specific
 .DS_Store
-.DAV
-node_modules
-*.log
-*.tmp.*
-package-lock.json
-*.lock
-build/*
-build-docs/*
-.sass-cache
-x-*
-*.err
+Thumbs.db
+
+# Build
+build/
+build-docs/
+dist/
 coverage/
 stats/
+.sass-cache
+x-*
+*.log
+*.tmp.*
+*.lock
+*.err
+
+# Custom
 src/tom-select.custom.ts
-dist
