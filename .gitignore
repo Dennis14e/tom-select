@@ -6,7 +6,6 @@ node_modules/
 Thumbs.db
 
 # Build
-build/
 build-docs/
 dist/
 coverage/
