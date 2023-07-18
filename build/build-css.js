@@ -14,8 +14,8 @@ const resolvedScssFiles = []
 const scssFiles = [
     'tom-select',
     'tom-select.default',
-    'tom-select.bootstrap4',
-    'tom-select.bootstrap5',
+    '-tom-select.bootstrap4',
+    '-tom-select.bootstrap5',
 ]
 
 for (const fileName of scssFiles) {
@@ -27,7 +27,7 @@ for (const fileName of scssFiles) {
 
 
 // Plugins
-const pluginSourcePath = path.posix.resolve(__dirname, '../src/plugins/')
+const pluginSourcePath = path.posix.resolve(path.resolve(__dirname, '../src/plugins/'))
 const pluginScssFiles = globby.sync(`${pluginSourcePath}/**/plugin.scss`)
 
 for (const filePath of pluginScssFiles) {
@@ -40,9 +40,19 @@ for (const filePath of pluginScssFiles) {
 }
 
 
-console.log(resolvedScssFiles)
 for (const file of resolvedScssFiles) {
-    fs.copyFileSync(file.src, file.dist)
+    const res = sass.compile(file.src)
+    ensureDirectoryExistence(file.dist)
+    fs.writeFileSync(file.dist, res.css)
+}
 
-    sass.compile(file.dist)
+
+// Functions
+function ensureDirectoryExistence (filePath) {
+    const dirname = path.dirname(filePath)
+    if (fs.existsSync(dirname)) {
+        return true
+    }
+    ensureDirectoryExistence(dirname)
+    fs.mkdirSync(dirname)
 }
